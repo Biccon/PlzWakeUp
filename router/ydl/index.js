@@ -4,6 +4,7 @@ import ydlManager from "../../modules/ydl-manager";
 ydlManager.setCallback(stream => {
   // db에 추가?
 });
+
 const router = Router();
 const findStream = id => {
   const streams = ydlManager.getStreams();

@@ -1,0 +1,188 @@
+.player {
+  $slider-height: 8px;
+  $slider__thumb-height: 20px;
+  $slider__thumb-width: 6px;
+  .slider {
+    line-height: 1em;
+    overflow: hidden;
+    padding: ($slider__thumb-height - $slider-height) / 2 0;
+
+    [type="range"] {
+      appearance: none;
+      background: #f2f2f2;
+      height: $slider-height;
+      position: relative;
+      width: 100%;
+
+      &:focus {
+        outline: none;
+      }
+
+      &::-webkit-slider-thumb {
+        appearance: none;
+        background-color: #3f3d34;
+        border-radius: 99px;
+        cursor: pointer;
+        height: $slider__thumb-height;
+        position: relative;
+        transition: transform 0.2s;
+        width: $slider__thumb-width;
+
+        &:focus,
+        &:active {
+          transform: scale(1.2);
+        }
+
+        &:after {
+          background: #f9774e;
+          bottom: 0;
+          content: "";
+          display: block;
+          height: $slider-height;
+          margin-top: 0 - ($slider-height / 2);
+          pointer-events: none;
+          position: absolute;
+          right: $slider__thumb-width;
+          top: 50%;
+          width: 999px;
+        }
+      }
+    }
+  }
+  width: 400px;
+  overflow-y: hidden;
+  background: white;
+  // box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  // margin: 10px;
+  display: flex;
+  flex-direction: column;
+  background: rgba(63, 61, 52, 1);
+  .player-cover {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    // padding-top: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // flex: 1 0;
+    img {
+      object-fit: scale-down;
+      width: 100%;
+      max-width: 300px;
+      max-height: 100%;
+    }
+  }
+  .player-noncover {
+    margin-top: auto;
+    .player-timer {
+      background: #ddd8c8;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      span {
+        font-weight: 500;
+        color: #3f3d34;
+      }
+    }
+    .player-progress {
+      margin-top: -1rem;
+    }
+    .player-controls {
+      display: flex;
+      justify-content: space-evenly;
+      list-style: none;
+      margin: 0;
+      padding: 1rem 2rem;
+      .control {
+        padding: 0.625rem;
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        border-radius: 50%;
+        margin: 3px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.4s, color 0.4s;
+        color: #3f3d34;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+
+        &:hover,
+        &:focus {
+          opacity: 0.8;
+        }
+        &:active {
+          color: #f9774e;
+          transition: none;
+        }
+      }
+      .control-small {
+        transform: scale(0.5);
+      }
+      .control-active {
+        color: #f9774e;
+      }
+      .control-dimmed {
+        opacity: 0.4;
+      }
+      .control-outlined {
+        // border: 2px solid #f2f2f2;
+        border-radius: 50%;
+      }
+    }
+    .player-title,
+    .player-subtitle {
+      font-family: "", "Nanum Gothic", sans-serif;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 0 1rem;
+      margin: 0;
+    }
+    .player-title {
+      text-align: center;
+      font-weight: 500;
+      font-size: 1.75rem;
+      line-height: 1em;
+      margin-bottom: 0.85rem;
+    }
+    .player-subtitle {
+      font-weight: 200;
+      text-align: center;
+      font-size: 1.25rem;
+      line-height: 1em;
+      color: #7f7c6b;
+      margin-bottom: 0.5rem;
+    }
+    .player-volume {
+      padding: 1rem 2rem;
+      display: flex;
+      .player-volume-icon {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1rem;
+        svg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .player-volume-slider {
+        width: 100%;
+        [type="range"] {
+          &::-webkit-slider-thumb {
+            background-color: #fff;
+            border: 3px solid #f9774e;
+            width: $slider__thumb-height;
+
+            &:after {
+              right: $slider__thumb-height - 6;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,9 +1,8 @@
 import { Router } from "express";
-import player from "modules/player";
 const router = Router();
-router.get("/", (req, res) => {
-  res.send(player.getAudioFiles());
-});
+// router.get("/", (req, res) => {
+//   res.send('a')
+// });
 
 router.get("/cover/:filename", (req, res) => {
   const { filename } = req.params;
