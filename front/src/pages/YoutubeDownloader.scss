@@ -1,0 +1,13 @@
+.pending{
+    &-item {
+        display:flex!important;
+        .thumbnail {
+            width:33%;
+            flex-shrink:0;
+        }
+        .state {
+            width:50px;
+            flex-shrink:0;
+        }
+    }
+}

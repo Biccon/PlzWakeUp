@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PlayerWrapper from "./wrappers/PlayerWrapper";
+import PlayerWrapper from "../wrappers/PlayerWrapper";
 import socketio from "socket.io-client";
 
 class Player extends Component {
@@ -28,7 +28,7 @@ class Player extends Component {
       this.setState({
         player: { ...player, subtitle: `${album} - ${artist}` }
       });
-      // console.log(player);
+      console.log(player);
     });
 
     socket.on("playlist", playlist => {

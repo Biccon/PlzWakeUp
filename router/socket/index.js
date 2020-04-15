@@ -22,11 +22,12 @@ export default server => {
       }
     };
     const handlers = {
-      setVolume(data) {
-        console.log("setvol", data);
+      async setVolume(data) {
+        const { playing } = player.getState();
+        if (playing) await player.setVolume(data);
       },
-      getVolume() {
-        console.log("getvol");
+      async getVolume() {
+        return player.getVolume()
       },
       setLoop(loop) {
         playlist.setLoop(loop);
@@ -89,9 +90,6 @@ export default server => {
             return { title, album, artist, duration: fmtMSS(dur), active };
           })
         );
-        // let totalDuration = list.reduce((prevDuration, { duration }) => {
-        //   return prevDuration + duration;
-        // }, 0);
         socket.emit("playlist", {
           title: "현재 재생중인 곡",
           duration: fmtMSS(totalDuration),
@@ -101,7 +99,7 @@ export default server => {
     };
     Object.entries(handlers).forEach(([key, value]) => socket.on(key, value));
     const playerInterval = setInterval(() => {
-      // handlers.player();
+      handlers.player();
       handlers.playlist();
     }, 1000);
     socket.on("disconnect", () => {
